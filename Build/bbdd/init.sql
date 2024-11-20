@@ -1,24 +1,16 @@
-CREATE DATABASE examen1;
-USE examen1;
+CREATE DATABASE IF NOT EXISTS `examen1`;
+USE `examen1`;
 
-CREATE TABLE songs (
-    id_song INT AUTO_INCREMENT,
-    song_name VARCHAR(255),
-    artist VARCHAR(255),
-    duration DECIMAL(10,2),
-    song_path VARCHAR(255),
-    PRIMARY KEY (id_song)
-);
+DROP TABLE IF EXISTS `songs`;
+CREATE TABLE `songs` (
+  `id_song` int NOT NULL AUTO_INCREMENT,
+  `song_name` varchar(255) DEFAULT NULL,
+  `artist` varchar(255) DEFAULT NULL,
+  `song_path` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_song`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO songs (id_song, song_name, artist, duration, song_path) VALUES (1, "Song 1", "Artist 1", 3.45, "path1");
-INSERT INTO songs (id_song, song_name, artist, duration, song_path) VALUES (2, "Song 2", "Artist 2", 2.30, "path2");
+LOCK TABLES `songs` WRITE;
+INSERT INTO `songs` VALUES (12,'Cancion 1','artista 1','uploads/673e16ff76804_dojacatcancion.mp3');
+UNLOCK TABLES;
 
-CREATE TABLE users (
-    id_user INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255),
-    password VARCHAR(255),
-    email VARCHAR(255),
-    role VARCHAR(50) DEFAULT 'user'
-);
-
-INSERT INTO users (id_user, username, password, email, role) VALUES (1, "admin", "12345678", "admin@example.com", "administrator");
